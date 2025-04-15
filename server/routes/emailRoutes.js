@@ -37,7 +37,7 @@ const upload = multer({
 
 // Middleware for handling file upload errors
 const uploadMiddleware = (req, res, next) => {
-  upload.single("csvFile")(req, res, (err) => {
+  upload.single("csv")(req, res, (err) => {
     if (err instanceof multer.MulterError) {
       return res.status(400).json({ error: true, message: `Multer error: ${err.message}` });
     } else if (err) {

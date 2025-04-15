@@ -7,9 +7,12 @@ const emailRoutes = require("./routes/emailRoutes");
 const multer = require("multer");
 const upload = multer({ dest: "uploads/" });
 require("./middlewares/passportSetup");
+const cors = require("cors");
+
 
 dotenv.config();
 const app = express();
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
 app.use(express.json());
 app.use(session({ secret: "secret", resave: false, saveUninitialized: true }));
